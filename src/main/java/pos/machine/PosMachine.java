@@ -10,8 +10,8 @@ public class PosMachine {
     /*
     P : 1 mins
     D : 1 mins
-    C : check if method returns receipt content according to requirements
-    A : review current logic and testing result, and fix bug
+    C : check if method returns receipt content according to requirements -> result passed
+    A : bug fix -> N/A, enhancement -> N/A
      */
     public String printReceipt(List<String> barcodes) {
         Map<String, Integer> itemQuantityMapping = this.getItemQuantityMapping(barcodes);
@@ -22,8 +22,8 @@ public class PosMachine {
     /*
     P : 1 mins
     D : 1 mins
-    C : check if method calculates quantity of each item correctly
-    A : review current logic and testing result, and fix bug
+    C : check if method calculates quantity of each item correctly -> result failed as default count of each item is set as 1 and the sorting of key is different with requirements
+    A : bug fix -> set default count of each item to 0 and use treeMap instead of hashMap, enhancement -> N/A
      */
     private Map<String, Integer> getItemQuantityMapping(List<String> barcodes) {
         Map<String, Integer> itemQuantityMapping = new TreeMap<>();
@@ -40,8 +40,8 @@ public class PosMachine {
     /*
     P : 5 mins
     D : 6 mins
-    C : check if method returns receipt content according to requirements
-    A : review current logic and testing result, and fix bug
+    C : check if method returns receipt content according to requirements -> result failed as link breaking symbol should be \n instead of \r\n
+    A : bug fix -> line breaking with \n, enhancement -> think of combining calculateTotal inside this method to reduce the loop
      */
     private String generateReceipt(Map<String, Integer> itemQuantityMapping) {
         StringBuilder receipt = new StringBuilder("***<store earning no money>Receipt***");
@@ -63,8 +63,8 @@ public class PosMachine {
     /*
     P : 3 mins
     D : 4 mins
-    C : check if method returns receipt item detail correctly
-    A : review current logic and testing result, and fix bug
+    C : check if method returns receipt item detail correctly -> result passed
+    A : bug fix -> N/A, enhancement -> N/A
      */
     private List<ReceiptItemDetail> getReceiptItemDetailList(Map<String, Integer> itemQuantityMapping) {
         List<ReceiptItemDetail> receiptItemDetailList = new ArrayList<>();
@@ -88,8 +88,8 @@ public class PosMachine {
     /*
     P : 1 mins
     D : 1 mins
-    C : check if method summarize all subtotal correctly
-    A : review current logic and testing result, and fix bug
+    C : check if method summarize all subtotal correctly -> result passed
+    A : bug fix -> N/A, enhancement -> N/A
      */
     private Integer calculateTotal(List<ReceiptItemDetail> receiptItemDetailList) {
         int total = 0;
