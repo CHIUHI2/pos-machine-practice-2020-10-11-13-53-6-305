@@ -7,12 +7,24 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class PosMachine {
+    /*
+    P : 1 mins
+    D : 1 mins
+    C : check if method returns receipt content according to requirements
+    A : review current logic and testing result, and fix bug
+     */
     public String printReceipt(List<String> barcodes) {
         Map<String, Integer> itemQuantityMapping = this.getItemQuantityMapping(barcodes);
 
         return this.generateReceipt(itemQuantityMapping);
     }
 
+    /*
+    P : 1 mins
+    D : 1 mins
+    C : check if method calculates quantity of each item correctly
+    A : review current logic and testing result, and fix bug
+     */
     private Map<String, Integer> getItemQuantityMapping(List<String> barcodes) {
         Map<String, Integer> itemQuantityMapping = new TreeMap<>();
 
@@ -25,6 +37,12 @@ public class PosMachine {
         return  itemQuantityMapping;
     }
 
+    /*
+    P : 5 mins
+    D : 6 mins
+    C : check if method returns receipt content according to requirements
+    A : review current logic and testing result, and fix bug
+     */
     private String generateReceipt(Map<String, Integer> itemQuantityMapping) {
         StringBuilder receipt = new StringBuilder("***<store earning no money>Receipt***");
 
@@ -42,6 +60,12 @@ public class PosMachine {
         return receipt.toString();
     }
 
+    /*
+    P : 3 mins
+    D : 4 mins
+    C : check if method returns receipt item detail correctly
+    A : review current logic and testing result, and fix bug
+     */
     private List<ReceiptItemDetail> getReceiptItemDetailList(Map<String, Integer> itemQuantityMapping) {
         List<ReceiptItemDetail> receiptItemDetailList = new ArrayList<>();
         Map<String, ItemInfo> itemInfoMapping =  this.getItemInfoMapping();
@@ -61,6 +85,12 @@ public class PosMachine {
         return receiptItemDetailList;
     }
 
+    /*
+    P : 1 mins
+    D : 1 mins
+    C : check if method summarize all subtotal correctly
+    A : review current logic and testing result, and fix bug
+     */
     private Integer calculateTotal(List<ReceiptItemDetail> receiptItemDetailList) {
         int total = 0;
 
@@ -71,6 +101,12 @@ public class PosMachine {
         return total;
     }
 
+    /*
+    P : 1 mins
+    D : 1 mins
+    C : check if method returns correct mapping of barcode and respective ItemInfo
+    A : review current logic and testing result, and fix bug
+     */
     private Map<String, ItemInfo> getItemInfoMapping() {
         Map<String, ItemInfo> itemInfoMapping = new HashMap<>();
 
